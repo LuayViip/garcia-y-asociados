@@ -1,0 +1,49 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { DEMO_CONTACT_EMAIL, DEVELOPER_NAME, SITE_NAME } from '../consts';
+---
+
+<LegalLayout
+  title={`Política de Privacidad — ${SITE_NAME}`}
+  description={`Política de privacidad del proyecto de demostración Asesoría ${SITE_NAME}: no se recopilan ni procesan datos personales de ningún visitante.`}
+  path="/politica-privacidad/"
+  heading="Política de Privacidad"
+>
+  <section>
+    <h2>Resumen</h2>
+    <p>
+      Este sitio es una demostración de portfolio y no recopila, almacena ni procesa datos
+      personales de sus visitantes. No hay base de datos, servidor de backend ni servicio de
+      terceros que reciba su información al navegar por esta web.
+    </p>
+  </section>
+
+  <section>
+    <h2>Formulario de contacto</h2>
+    <p>
+      El formulario de la sección "Contacto" es una demostración visual del diseño del sitio: no
+      está conectado a ningún servicio de envío y los datos introducidos no se guardan, no se
+      transmiten y no llegan a ningún destinatario real. Si desea contactar con {DEVELOPER_NAME},
+      autor de este proyecto, puede escribir directamente a
+      <a href={`mailto:${DEMO_CONTACT_EMAIL}`}>{DEMO_CONTACT_EMAIL}</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Cookies y analítica</h2>
+    <p>
+      No se utiliza ninguna cookie, píxel de seguimiento ni herramienta de analítica en este
+      sitio. Las tipografías se sirven de forma local (self-hosted), por lo que tampoco se
+      establecen conexiones con terceros para cargarlas.
+    </p>
+  </section>
+
+  <section>
+    <h2>Sus derechos</h2>
+    <p>
+      Al no recopilarse ningún dato personal, no existe información sobre la que ejercer derechos
+      de acceso, rectificación o supresión. Cualquier pregunta sobre este proyecto puede enviarse a
+      <a href={`mailto:${DEMO_CONTACT_EMAIL}`}>{DEMO_CONTACT_EMAIL}</a>.
+    </p>
+  </section>
+</LegalLayout>

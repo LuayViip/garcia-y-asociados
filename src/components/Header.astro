@@ -1,0 +1,248 @@
+---
+// Fixed header: transparent over the hero, solid with a double rule once the page scrolls.
+import { SITE_NAME } from '../consts';
+---
+
+<header class="site-header" id="site-header">
+  <div class="container site-header__bar">
+    <input type="checkbox" id="nav-toggle" class="site-header__toggle-input" />
+
+    <div class="site-header__menu">
+      <nav aria-label="Navegación principal" class="site-header__nav site-header__nav--left">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#firma">Firma</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Navegación secundaria" class="site-header__nav site-header__nav--right">
+        <ul>
+          <li><a href="#honorarios">Honorarios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <a href="#top" class="site-header__logo">
+      <span class="site-header__logo-name">{SITE_NAME}</span>
+      <span class="site-header__logo-tagline">Asesoría fiscal y legal</span>
+    </a>
+
+    <label for="nav-toggle" class="site-header__toggle-label">
+      <span class="site-header__burger" aria-hidden="true">
+        <span class="site-header__burger-line"></span>
+        <span class="site-header__burger-line"></span>
+        <span class="site-header__burger-line"></span>
+      </span>
+      <span class="site-header__toggle-sr">Menú</span>
+    </label>
+  </div>
+  <div class="site-header__rule double-rule" aria-hidden="true"></div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const setScrolled = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', setScrolled, { passive: true });
+  setScrolled();
+
+  const navToggle = document.getElementById('nav-toggle') as HTMLInputElement | null;
+  header?.querySelectorAll('.site-header__nav a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (navToggle) navToggle.checked = false;
+    });
+  });
+</script>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 40;
+    background: transparent;
+    transition: background-color var(--duration-hover) var(--ease-standard);
+  }
+
+  .site-header.is-scrolled {
+    background: var(--color-charcoal);
+  }
+
+  .site-header__rule {
+    opacity: 0;
+    transition: opacity var(--duration-hover) var(--ease-standard);
+  }
+
+  .site-header.is-scrolled .site-header__rule {
+    opacity: 1;
+  }
+
+  .site-header__bar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 24px;
+  }
+
+  .site-header__menu {
+    display: contents;
+  }
+
+  .site-header__nav--left {
+    order: 1;
+  }
+
+  .site-header__logo {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .site-header__nav--right {
+    order: 3;
+  }
+
+  .site-header__toggle-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .site-header__toggle-input:focus-visible ~ .site-header__toggle-label {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  .site-header__logo-name {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--color-ivory);
+  }
+
+  .site-header__logo-tagline {
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-stone);
+  }
+
+  .site-header__nav ul {
+    display: flex;
+    gap: 32px;
+  }
+
+  .site-header__nav a {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-stone);
+    transition: color var(--duration-hover) var(--ease-standard);
+  }
+
+  .site-header__nav a:hover {
+    color: var(--color-ivory);
+  }
+
+  .site-header__toggle-label {
+    display: none;
+    cursor: pointer;
+  }
+
+  .site-header__toggle-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .site-header__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 24px;
+  }
+
+  .site-header__burger-line {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--color-ivory);
+    transition: transform var(--duration-hover) var(--ease-standard),
+      opacity var(--duration-hover) var(--ease-standard);
+  }
+
+  .site-header__toggle-input:checked ~ .site-header__toggle-label .site-header__burger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .site-header__toggle-input:checked ~ .site-header__toggle-label .site-header__burger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header__toggle-input:checked ~ .site-header__toggle-label .site-header__burger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  @media (max-width: 767px) {
+    .site-header__bar {
+      justify-content: center;
+    }
+
+    .site-header__logo {
+      order: 0;
+      flex-basis: 100%;
+    }
+
+    .site-header__menu {
+      display: block;
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      background: var(--color-charcoal);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height var(--duration-hover) var(--ease-standard);
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    .site-header__nav ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding-block: 16px;
+    }
+
+    .site-header__nav--left {
+      border-block-end: 1px solid rgba(163, 158, 147, 0.2);
+    }
+
+    .site-header__toggle-input:checked ~ .site-header__menu {
+      max-height: 320px;
+    }
+
+    .site-header__toggle-label {
+      display: block;
+      position: absolute;
+      inset-inline-end: var(--gutter-mobile);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 31;
+    }
+  }
+</style>

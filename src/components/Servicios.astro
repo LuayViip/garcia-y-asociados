@@ -1,0 +1,119 @@
+---
+// "Áreas de práctica" — four stacked service entries separated by the signature double rule.
+const servicios = [
+  {
+    nombre: 'Fiscal y tributario',
+    descripcion:
+      'Planificación fiscal continua y defensa ante la Administración, con el mismo criterio en cada decisión.',
+  },
+  {
+    nombre: 'Mercantil y societario',
+    descripcion:
+      'Constitución, gobierno corporativo y operaciones societarias resueltas con rigor documental.',
+  },
+  {
+    nombre: 'Laboral',
+    descripcion:
+      'Relaciones laborales, negociación colectiva y procedimientos, sin perder de vista el negocio.',
+  },
+  {
+    nombre: 'Planificación patrimonial',
+    descripcion:
+      'Estructuración patrimonial y sucesoria pensada a varias generaciones vista.',
+  },
+];
+---
+
+<section class="servicios reveal" id="servicios" aria-labelledby="servicios-heading">
+  <div class="container">
+    <h2 id="servicios-heading" class="label-caps servicios__label">Áreas de práctica</h2>
+    <ul class="servicios__list">
+      {
+        servicios.map((servicio, index) => (
+          <li class="servicios__item">
+            {index > 0 && <div class="double-rule servicios__rule" aria-hidden="true" />}
+            <div class="servicios__row">
+              <h3 class="servicios__name">{servicio.nombre}</h3>
+              <p class="servicios__desc">{servicio.descripcion}</p>
+              <span class="servicios__arrow" aria-hidden="true">→</span>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .servicios {
+    padding-block: var(--space-section);
+  }
+
+  .servicios__label {
+    display: block;
+    margin-bottom: 56px;
+    text-align: left;
+  }
+
+  .servicios__rule {
+    margin-bottom: 40px;
+  }
+
+  .servicios__item:first-child .servicios__row {
+    padding-top: 0;
+  }
+
+  .servicios__row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr auto;
+    align-items: baseline;
+    column-gap: 40px;
+    padding-block: 40px;
+  }
+
+  .servicios__name {
+    font-family: var(--font-display);
+    font-size: var(--text-section);
+    font-weight: 400;
+    color: var(--color-ivory);
+    transition: color var(--duration-hover) var(--ease-standard);
+  }
+
+  .servicios__desc {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-stone);
+  }
+
+  .servicios__arrow {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: var(--color-burdeos-light);
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity var(--duration-hover) var(--ease-standard),
+      transform var(--duration-hover) var(--ease-standard);
+  }
+
+  .servicios__item:hover .servicios__name {
+    color: var(--color-burdeos-light);
+  }
+
+  .servicios__item:hover .servicios__arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 767px) {
+    .servicios__row {
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+      padding-block: 32px;
+    }
+
+    .servicios__arrow {
+      opacity: 1;
+    }
+  }
+</style>

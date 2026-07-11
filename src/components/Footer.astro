@@ -1,0 +1,91 @@
+---
+// Quiet closing: legal links, copyright, and the demo-authorship line.
+import DoubleRule from './DoubleRule.astro';
+import { DEVELOPER_NAME, DEVELOPER_URL, SITE_NAME } from '../consts';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <DoubleRule />
+    <div class="site-footer__content">
+      <p class="site-footer__logo">{SITE_NAME}</p>
+      <nav aria-label="Enlaces legales">
+        <ul class="site-footer__links">
+          <li><a href="/aviso-legal/">Aviso Legal</a></li>
+          <li><a href="/politica-privacidad/">Privacidad</a></li>
+          <li><a href="/politica-cookies/">Cookies</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__copyright">© {year} {SITE_NAME}</p>
+      <p class="site-footer__credit">
+        Proyecto de demostración — diseño y desarrollo por
+        <a href={DEVELOPER_URL}>  {DEVELOPER_NAME}</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: var(--space-section);
+  }
+
+  .site-footer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding-top: 56px;
+  }
+
+  .site-footer__logo {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--color-ivory);
+  }
+
+  .site-footer__links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .site-footer__links a {
+    font-family: var(--font-body);
+    font-size: var(--text-label-lg);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-stone);
+    transition: color var(--duration-hover) var(--ease-standard);
+  }
+
+  .site-footer__links a:hover {
+    color: var(--color-ivory);
+  }
+
+  .site-footer__copyright {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    color: var(--color-stone);
+  }
+
+  .site-footer__credit {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    color: var(--color-stone);
+  }
+
+  .site-footer__credit a {
+    color: var(--color-stone);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color var(--duration-hover) var(--ease-standard);
+  }
+
+  .site-footer__credit a:hover {
+    color: var(--color-ivory);
+  }
+</style>

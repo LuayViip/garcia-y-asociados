@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Servicios from '../components/Servicios.astro';
+import Firma from '../components/Firma.astro';
+import Honorarios from '../components/Honorarios.astro';
+import Contacto from '../components/Contacto.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import DoubleRule from '../components/DoubleRule.astro';
+import {
+  BUSINESS_ADDRESS_LINE1,
+  BUSINESS_EMAIL,
+  BUSINESS_PHONE_TEL,
+  SITE_NAME,
+  SITE_URL,
+} from '../consts';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: SITE_NAME,
+  description:
+    'Asesoría fiscal, mercantil y laboral para empresas en Madrid. Atención de socio, presupuesto cerrado y criterio propio.',
+  url: SITE_URL,
+  telephone: BUSINESS_PHONE_TEL,
+  email: BUSINESS_EMAIL,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: BUSINESS_ADDRESS_LINE1,
+    addressLocality: 'Madrid',
+    postalCode: '28002',
+    addressCountry: 'ES',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '19:00',
+  },
+  areaServed: 'ES',
+  foundingDate: '1998',
+  priceRange: '€€€',
+};
+---
+
+<Base
+  title={`${SITE_NAME} — Asesoría fiscal y mercantil en Madrid`}
+  description="Asesoría fiscal, mercantil y laboral para empresas en Madrid. Atención de socio, presupuesto cerrado y 25 años de criterio. Desde 1998."
+  path="/"
+>
+  <script type="application/ld+json" slot="head" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  <Header />
+  <main>
+    <Hero />
+    <div class="container section-divider"><DoubleRule /></div>
+    <Servicios />
+    <div class="container section-divider"><DoubleRule /></div>
+    <Firma />
+    <div class="container section-divider"><DoubleRule /></div>
+    <Honorarios />
+    <div class="container section-divider section-divider--tight"><DoubleRule /></div>
+    <Contacto />
+  </main>
+  <Footer />
+  <WhatsAppButton />
+</Base>
+
+<style>
+  .section-divider {
+    padding-block: 40px;
+  }
+
+  .section-divider--tight {
+    padding-block: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .section-divider {
+      padding-block: 24px;
+    }
+  }
+</style>

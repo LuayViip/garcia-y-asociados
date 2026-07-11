@@ -1,0 +1,70 @@
+---
+// Serene opening statement — the only section visible without a reveal transition.
+---
+
+<section class="hero" id="inicio">
+  <div class="container hero__inner">
+    <p class="hero__eyebrow">MADRID · DESDE 1998</p>
+    <h1 class="hero__headline">El criterio se nota<br /><em>en los detalles.</em></h1>
+    <p class="hero__lede">
+      Asesoramiento fiscal y mercantil para empresas que no improvisan. Atención de socio, no de
+      departamento.
+    </p>
+    <a href="#contacto" class="dash-link hero__cta">
+      SOLICITAR REUNIÓN
+      <span class="dash-link__dash" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--space-hero);
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-stone);
+  }
+
+  .hero__headline {
+    font-family: var(--font-display);
+    font-size: var(--text-hero);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--color-ivory);
+  }
+
+  .hero__headline em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero__lede {
+    max-width: 50ch;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--color-stone);
+  }
+
+  .hero__cta {
+    margin-top: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding-block: 140px;
+    }
+  }
+</style>

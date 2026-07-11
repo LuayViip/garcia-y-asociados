@@ -1,0 +1,196 @@
+---
+// Contact: address details on the left, a plain-line form on the right. Only filled button sitewide.
+import {
+  BUSINESS_ADDRESS_LINE1,
+  BUSINESS_ADDRESS_LINE2,
+  BUSINESS_EMAIL,
+  BUSINESS_HOURS,
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+} from '../consts';
+---
+
+<section class="contacto reveal" id="contacto" aria-labelledby="contacto-heading">
+  <div class="container contacto__grid">
+    <div class="contacto__info">
+      <h2 id="contacto-heading" class="label-caps contacto__label">Contacto</h2>
+      <address class="contacto__address">
+        <div class="contacto__item">
+          <p class="label-caps">Dirección</p>
+          <p class="contacto__value">{BUSINESS_ADDRESS_LINE1}<br />{BUSINESS_ADDRESS_LINE2}</p>
+        </div>
+        <div class="contacto__item">
+          <p class="label-caps">Teléfono</p>
+          <p class="contacto__value">
+            <a href={`tel:${BUSINESS_PHONE_TEL}`}>{BUSINESS_PHONE_DISPLAY}</a>
+          </p>
+        </div>
+        <div class="contacto__item">
+          <p class="label-caps">Correo</p>
+          <p class="contacto__value"><a href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL}</a></p>
+        </div>
+        <div class="contacto__item">
+          <p class="label-caps">Horario</p>
+          <p class="contacto__value">{BUSINESS_HOURS}</p>
+        </div>
+      </address>
+    </div>
+
+    <form class="contacto__form" method="POST" action="#">
+      <div class="contacto__field">
+        <label for="nombre" class="label-caps">Nombre</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required />
+      </div>
+      <div class="contacto__field">
+        <label for="correo" class="label-caps">Correo</label>
+        <input id="correo" name="correo" type="email" autocomplete="email" required />
+      </div>
+      <div class="contacto__field">
+        <label for="telefono" class="label-caps">Teléfono</label>
+        <input id="telefono" name="telefono" type="tel" autocomplete="tel" />
+      </div>
+      <div class="contacto__field">
+        <label for="asunto" class="label-caps">Asunto</label>
+        <select id="asunto" name="asunto">
+          <option value="fiscal">Fiscal</option>
+          <option value="mercantil">Mercantil</option>
+          <option value="laboral">Laboral</option>
+          <option value="patrimonial">Patrimonial</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="contacto__field">
+        <label for="mensaje" class="label-caps">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="contacto__submit">Enviar solicitud</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contacto {
+    padding-block-start: 72px;
+    padding-block-end: var(--space-section);
+  }
+
+  .contacto__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    gap: 80px;
+  }
+
+  .contacto__label {
+    display: block;
+    margin-bottom: 48px;
+  }
+
+  .contacto__address {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contacto__item p:first-child {
+    margin-bottom: 8px;
+  }
+
+  .contacto__value {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-ivory);
+  }
+
+  .contacto__value a {
+    transition: color var(--duration-hover) var(--ease-standard);
+  }
+
+  .contacto__value a:hover {
+    color: var(--color-burdeos-light);
+  }
+
+  .contacto__form {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .contacto__field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contacto__field label {
+    color: var(--color-stone);
+  }
+
+  .contacto__field input,
+  .contacto__field select,
+  .contacto__field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-stone);
+    border-radius: 0;
+    padding-block: 10px;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    color: var(--color-ivory);
+    caret-color: var(--color-ivory);
+    transition: border-color var(--duration-hover) var(--ease-standard);
+  }
+
+  .contacto__field select {
+    background-color: var(--color-charcoal);
+  }
+
+  .contacto__field select option {
+    background-color: var(--color-charcoal);
+    color: var(--color-ivory);
+  }
+
+  .contacto__field textarea {
+    resize: vertical;
+    min-height: 4.5em;
+  }
+
+  .contacto__field input::placeholder,
+  .contacto__field textarea::placeholder {
+    color: var(--color-stone);
+    opacity: 0.6;
+  }
+
+  .contacto__field input:focus,
+  .contacto__field select:focus,
+  .contacto__field textarea:focus {
+    border-color: var(--color-burdeos-light);
+  }
+
+  .contacto__submit {
+    align-self: flex-start;
+    margin-top: 12px;
+    padding: 16px 40px;
+    background: var(--color-burdeos);
+    color: var(--color-ivory);
+    font-family: var(--font-body);
+    font-size: var(--text-label-lg);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color var(--duration-hover) var(--ease-standard);
+  }
+
+  .contacto__submit:hover {
+    background: var(--color-burdeos-dark);
+  }
+
+  @media (max-width: 900px) {
+    .contacto__grid {
+      grid-template-columns: 1fr;
+      gap: 64px;
+    }
+  }
+</style>

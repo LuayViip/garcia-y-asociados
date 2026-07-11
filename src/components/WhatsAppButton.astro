@@ -1,0 +1,42 @@
+---
+// Fixed WhatsApp entry point, muted so it doesn't clash with the dark, restrained aesthetic.
+import { WHATSAPP_URL } from '../consts';
+---
+
+<a
+  href={WHATSAPP_URL}
+  class="whatsapp-button"
+  aria-label="Contactar por WhatsApp"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+    <path
+      fill="currentColor"
+      d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.41-1.35a9.9 9.9 0 0 0 4.63 1.15h.01c5.46 0 9.9-4.45 9.9-9.9C21.95 6.45 17.5 2 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.78.83-3.03-.2-.31a8.15 8.15 0 0 1-1.26-4.33c0-4.52 3.68-8.2 8.24-8.2 2.2 0 4.27.86 5.83 2.42a8.17 8.17 0 0 1 2.41 5.82c0 4.52-3.68 8.18-8.24 8.18Zm4.5-6.13c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.16 0-.43.06-.65.31-.23.25-.86.84-.86 2.04 0 1.2.88 2.37 1 2.53.12.16 1.74 2.65 4.21 3.72.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.66-1.17.21-.58.21-1.07.15-1.17-.06-.11-.23-.17-.48-.29Z"
+    ></path>
+  </svg>
+</a>
+
+<style>
+  .whatsapp-button {
+    position: fixed;
+    inset-block-end: 24px;
+    inset-inline-end: 24px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-stone);
+    border-radius: 50%;
+    color: var(--color-whatsapp);
+    transition: border-color var(--duration-hover) var(--ease-standard);
+  }
+
+  .whatsapp-button:hover {
+    border-color: var(--color-ivory);
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+// "La Firma" — the credo, lifted on a surface block, with three restrained facts. No count-up, no color.
+const hechos = [
+  { numero: '25', etiqueta: 'Años de ejercicio' },
+  { numero: '3', etiqueta: 'Socios directores' },
+  { numero: '1', etiqueta: 'Interlocutor único por cliente' },
+];
+---
+
+<section class="firma reveal" id="firma" aria-labelledby="firma-heading">
+  <div class="container firma__inner">
+    <h2 id="firma-heading" class="label-caps firma__label">La firma</h2>
+    <blockquote class="firma__quote">
+      <p>Un buen asesor no le dice lo que quiere oír. Le dice lo que necesita saber.</p>
+    </blockquote>
+    <div class="firma__facts">
+      {
+        hechos.map((hecho) => (
+          <div class="firma__fact">
+            <p class="firma__number">{hecho.numero}</p>
+            <p class="label-caps">{hecho.etiqueta}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .firma {
+    padding-block: var(--space-section);
+    background: var(--color-surface);
+  }
+
+  .firma__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .firma__label {
+    margin-bottom: 48px;
+  }
+
+  .firma__quote {
+    max-width: 42ch;
+    margin-bottom: 72px;
+  }
+
+  .firma__quote p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--text-credo);
+    line-height: 1.4;
+    color: var(--color-ivory);
+  }
+
+  .firma__facts {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .firma__fact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-inline: 48px;
+    border-inline-start: 1px solid var(--color-stone);
+  }
+
+  .firma__fact:first-child {
+    border-inline-start: none;
+  }
+
+  .firma__number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--color-ivory);
+  }
+
+  @media (max-width: 640px) {
+    .firma__facts {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .firma__fact {
+      border-inline-start: none;
+      border-block-start: 1px solid var(--color-stone);
+      padding-inline: 0;
+      padding-block-start: 32px;
+    }
+
+    .firma__fact:first-child {
+      border-block-start: none;
+      padding-block-start: 0;
+    }
+  }
+</style>

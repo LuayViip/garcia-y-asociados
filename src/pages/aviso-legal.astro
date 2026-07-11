@@ -1,0 +1,61 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { DEMO_CONTACT_EMAIL, DEVELOPER_NAME, DEVELOPER_URL, SITE_NAME } from '../consts';
+---
+
+<LegalLayout
+  title={`Aviso Legal — ${SITE_NAME}`}
+  description={`Aviso legal del proyecto de demostración Asesoría ${SITE_NAME}, diseñado y desarrollado por ${DEVELOPER_NAME}.`}
+  path="/aviso-legal/"
+  heading="Aviso Legal"
+>
+  <section>
+    <h2>Naturaleza de este sitio</h2>
+    <p>
+      Este sitio web es un proyecto de demostración de diseño y desarrollo, creado por
+      {DEVELOPER_NAME}, desarrollador web freelance, como parte de su portfolio profesional.
+      "Asesoría {SITE_NAME}" es un negocio ficticio: no existe como entidad real y no presta
+      servicios de asesoría fiscal, mercantil o laboral. Cualquier parecido con firmas, personas o
+      entidades reales es coincidencia y no intencionado.
+    </p>
+  </section>
+
+  <section>
+    <h2>Finalidad</h2>
+    <p>
+      Esta web existe únicamente para mostrar a potenciales clientes las capacidades de diseño y
+      desarrollo web de {DEVELOPER_NAME}. No ofrece servicios reales, no representa a ninguna
+      empresa real y no puede establecerse ninguna relación comercial con "Asesoría {SITE_NAME}" a
+      través de este sitio.
+    </p>
+  </section>
+
+  <section>
+    <h2>Titularidad</h2>
+    <p>
+      Este sitio es propiedad de {DEVELOPER_NAME}, desarrollador web freelance, quien lo opera
+      como pieza de portfolio. Para cualquier consulta puede escribir a
+      <a href={`mailto:${DEMO_CONTACT_EMAIL}`}>{DEMO_CONTACT_EMAIL}</a> o visitar
+      <a href={DEVELOPER_URL}>{DEVELOPER_URL}</a>. Al no corresponder a una entidad real, no se
+      facilitan CIF, NIF ni domicilio social.
+    </p>
+  </section>
+
+  <section>
+    <h2>Propiedad intelectual</h2>
+    <p>
+      El diseño, el código y los textos de esta demostración pertenecen a {DEVELOPER_NAME}. Este
+      mismo diseño puede adaptarse para clientes reales previo acuerdo; no está autorizada su
+      reproducción o reutilización sin permiso.
+    </p>
+  </section>
+
+  <section>
+    <h2>Enlaces y responsabilidad</h2>
+    <p>
+      Este sitio puede enlazar a páginas de terceros, como {DEVELOPER_URL}, sobre cuyo contenido no
+      se asume responsabilidad. El contenido de esta demostración se ofrece "tal cual", con fines
+      exclusivamente ilustrativos y sin garantía de disponibilidad continua.
+    </p>
+  </section>
+</LegalLayout>

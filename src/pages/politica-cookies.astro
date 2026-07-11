@@ -1,0 +1,29 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { SITE_NAME } from '../consts';
+---
+
+<LegalLayout
+  title={`Política de Cookies — ${SITE_NAME}`}
+  description={`Política de cookies del proyecto de demostración Asesoría ${SITE_NAME}: el sitio no utiliza cookies propias ni de terceros.`}
+  path="/politica-cookies/"
+  heading="Política de Cookies"
+>
+  <section>
+    <h2>Uso de cookies en este sitio</h2>
+    <p>
+      Este sitio no utiliza cookies de ningún tipo: ni técnicas, ni de personalización, ni de
+      análisis, ni publicitarias. Al ser un proyecto de demostración sin backend ni sistemas de
+      seguimiento, no existe necesidad de almacenar información en su navegador.
+    </p>
+  </section>
+
+  <section>
+    <h2>Cookies de terceros</h2>
+    <p>
+      No se cargan recursos de terceros que puedan instalar cookies. Las tipografías utilizadas
+      (Cormorant Garamond y Source Sans 3) están alojadas de forma local dentro del propio sitio,
+      por lo que no se realizan peticiones a servicios externos como Google Fonts.
+    </p>
+  </section>
+</LegalLayout>
