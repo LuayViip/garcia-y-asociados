@@ -6,4 +6,4 @@ Stack: Astro · CSS vanilla · pnpm
 
 Diseño y desarrollo: Luay
 
-Demo: <vercel-url>
+Demo: https://garcia-y-asociados.vercel.app
